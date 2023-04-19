@@ -87,13 +87,6 @@ while acalls < ffcs
 
 end
 
-s_size = sum(X);
-if s_size > lcons
-    samp_size = s_size - lcons;
-    idx1 = find(X==1);
-    t_idx = randsample(idx1,samp_size);
-    X(1,t_idx) = 0;
-end
 opt_vec = X;
 stats = cell(1,2);
 stats{1,1} = opt_vec;

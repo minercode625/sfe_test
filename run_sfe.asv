@@ -6,7 +6,6 @@ pctRunOnAll warning( 'off');
 for data_idx = 7:length(list)
     data_path = './Dataset/';
     dataName = list(data_idx).name;
-    dataName
     load(sprintf('%s%s',data_path,dataName));
     
     if exist('data_dis', 'var') == 1
