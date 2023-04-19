@@ -28,6 +28,13 @@ while acalls < ffcs
 
     EFs=0;
     X=randi([0,1],1,col);      % Initialize an Individual X
+    s_size = sum(X);
+    if s_size > lcons
+        samp_size = s_size - lcons;
+        idx1 = find(X==1);
+        t_idx = randsample(idx1,samp_size);
+        X(1,t_idx) = 0;
+    end
     Fit_X=evaluate(X);           % Calculate the Fitness of X
 
     while EFs < 10
@@ -55,7 +62,13 @@ while acalls < ffcs
             K=S_Index(K1)';
             X_New(K)=1;                 % Set X_New (K)=1
         end
-
+        s_size = sum(X_New);
+        if s_size > lcons
+            samp_size = s_size - lcons;
+            idx1 = find(X_New==1);
+            t_idx = randsample(idx1,samp_size);
+            X_New(1,t_idx) = 0;
+        end
 
         Fit_X_New=evaluate(X_New); %Calculate the Fitness of X_New
 
@@ -79,7 +92,7 @@ if s_size > lcons
     samp_size = s_size - lcons;
     idx1 = find(X==1);
     t_idx = randsample(idx1,samp_size);
-    X(idx,t_idx) = 0;
+    X(1,t_idx) = 0;
 end
 opt_vec = X;
 stats = cell(1,2);

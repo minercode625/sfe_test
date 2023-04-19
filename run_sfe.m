@@ -3,7 +3,7 @@ data_path = './Dataset/';
 list = dir(data_path);
 list = list(3:end);
 pctRunOnAll warning( 'off');
-for data_idx = 10:length(list)
+for data_idx = 7:length(list)
     data_path = './Dataset/';
     dataName = list(data_idx).name;
     load(sprintf('%s%s',data_path,dataName));
