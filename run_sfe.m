@@ -2,8 +2,8 @@ clear;
 data_path = './Dataset/';
 list = dir(data_path);
 list = list(3:end);
-pctRunOnAll warning( 'off');
-for data_idx = 7:length(list)
+%pctRunOnAll warning( 'off');
+for data_idx = 4:4
     data_path = './Dataset/';
     dataName = list(data_idx).name;
     dataName
@@ -15,7 +15,7 @@ for data_idx = 7:length(list)
     
     exp_iter = 10;
     
-    parfor k=1:exp_iter
+    for k=1:exp_iter
         train_data = data( sim_seq(:,k), : );
         train_answer = answer( sim_seq(:,k), : );
         
@@ -49,6 +49,6 @@ for data_idx = 7:length(list)
         
     end
     
-    out_path = '.';
-    save(sprintf('%s%s%s',out_path,dataName))
+    out_path = './';
+    save(sprintf('%s%s',out_path,dataName))
 end
